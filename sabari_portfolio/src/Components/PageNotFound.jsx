@@ -2,8 +2,8 @@ import React from 'react'
 
 const PageNotFound = () => {
   return (
-    <div>
-      <p>404 erro</p>
+    <div className='bg-gray-700'>
+      <p >404 erro</p>
     </div>
   )
 }
