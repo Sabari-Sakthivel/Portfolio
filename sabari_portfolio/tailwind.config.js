@@ -8,14 +8,18 @@ module.exports = {
         poppins: ['Poppins'],
       },
       colors: {
-        'dark-1': '#212529',
+        'dark-2': '#212529',
         'Gray-1':'#6c757D',
+        'dark-1':'#343A40',
         'customUnderline': '#4cd038',
-        'customUnderline1': '#d1d5db',
+        'customUnderline1': '#d1d5db'
       },
       'textDecorationColor': ['hover', 'focus'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ],
 }
 
