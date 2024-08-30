@@ -12,18 +12,17 @@ import PageNotFound from "./Components/PageNotFound";
 function App() {
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
       <div className="flex-1 ml-1/4 overflow-y-auto">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/about-me" element={<AboutMe />} />
+          <Route path="/about-me" element={<AboutMe />} />
           <Route path="/what-i-do" element={<WhatIDo />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<PageNotFound />} /> {/* Fallback route */}
         </Routes>
       </div>

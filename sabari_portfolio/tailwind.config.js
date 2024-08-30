@@ -11,6 +11,7 @@ module.exports = {
         'dark-1': '#212529',
         'Gray-1':'#6c757D',
         'customUnderline': '#4cd038',
+        'customUnderline1': '#d1d5db',
       },
       'textDecorationColor': ['hover', 'focus'],
     },
