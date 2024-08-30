@@ -14,6 +14,9 @@ const Sidebar = () => {
 
   // Function to determine if the link is active based on the current URL
   const isActiveLink = (path) => location.pathname === path;
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div>
@@ -37,8 +40,8 @@ const Sidebar = () => {
         <nav className="mt-4 flex flex-col items-center">
           <ul className="space-y-2 w-full text-center">
             <li>
-              <Link
-                to="/"
+              <p
+                onClick={()=>scrollToSection("home")}
                 className={classNames(
                   "block py-2.5 px-4 rounded hover:text-emerald-500",
                   {
@@ -49,11 +52,11 @@ const Sidebar = () => {
                 )}
               >
                 Home
-              </Link>
+              </p>
             </li>
             <li>
-              <Link
-                to="/about-me"
+              <p
+                onClick={()=>scrollToSection("about-me")}
                 className={classNames(
                   "block py-2.5 px-4 rounded hover:text-emerald-500",
                   {
@@ -64,11 +67,11 @@ const Sidebar = () => {
                 )}
               >
                 About Me
-              </Link>
+              </p>
             </li>
             <li>
-              <Link
-                to="/what-i-do"
+              <p
+                onClick={()=>scrollToSection("what-i-do")}
                 className={classNames(
                   "block py-2.5 px-4 rounded hover:text-emerald-500",
                   {
@@ -79,11 +82,11 @@ const Sidebar = () => {
                 )}
               >
                 What I Do
-              </Link>
+              </p>
             </li>
             <li>
-              <Link
-                to="/resume"
+              <p
+                onClick={()=>scrollToSection("resume")}
                 className={classNames(
                   "block py-2.5 px-4 rounded hover:text-emerald-500",
                   {
@@ -94,11 +97,11 @@ const Sidebar = () => {
                 )}
               >
                 Resume
-              </Link>
+              </p>
             </li>
             <li>
-              <Link
-                to="/portfolio"
+              <p
+                onClick={()=>scrollToSection("portfolio")}
                 className={classNames(
                   "block py-2.5 px-4 rounded hover:text-emerald-500",
                   {
@@ -109,11 +112,11 @@ const Sidebar = () => {
                 )}
               >
                 Portfolio
-              </Link>
+              </p>
             </li>
             <li>
-              <Link
-                to="/contact"
+              <p
+                onClick={()=>scrollToSection("contact")}
                 className={classNames(
                   "block py-2.5 px-4 rounded hover:text-emerald-500",
                   {
@@ -124,7 +127,8 @@ const Sidebar = () => {
                 )}
               >
                 Contact
-              </Link>
+              </p>
+              
             </li>
           </ul>
         </nav>
