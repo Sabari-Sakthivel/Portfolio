@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { FaDesktop, FaPaintbrush, FaFloppyDisk, FaLink } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import {
+  FaDesktop,
+  FaPaintbrush,
+  FaFloppyDisk,
+  FaLink,
+  FaPhoneVolume,
+} from "react-icons/fa6";
+import { HiOutlineMail } from "react-icons/hi";
+import GoDriveImg from "../../src/assets/GoDrive.png";
 import { Link } from "react-router-dom";
 import Sidebar from "./sidebar";
 
@@ -56,6 +65,10 @@ const Home = () => {
     });
   };
 
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("scroll", toggleVisibility);
@@ -68,101 +81,113 @@ const Home = () => {
       </div>
       <section
         id="home"
-        className="min-h-screen flex-1 relative bg-dark-2 ml-64 text-white flex flex-col justify-center items-center p-4"
+        className="min-h-screen flex-1 relative bg-dark-2 md:ml-64 text-white flex flex-col justify-center items-center p-4 sm:p-6"
       >
         <div className="text-center">
-          <h3 className="text-white font-medium text-2xl mb-10">Welcome</h3>
-          <div className="text-white font-serif text-2xl mt-6">
+          <h3 className="text-white font-medium text-xl sm:text-2xl mb-6 sm:mb-10">
+            Welcome
+          </h3>
+          <div className="text-white font-serif text-xl sm:text-2xl mt-4 sm:mt-6">
             <TypeAnimation
               sequence={sequence}
-              style={{ fontSize: "2em" }}
+              style={{ fontSize: "1.5em", sm: "2em" }}
               repeat={Infinity}
             />
           </div>
-          <p className="text-white text-2xl font-semibold mt-7">
+          <p className="text-white text-lg sm:text-2xl font-semibold mt-5 sm:mt-7">
             From Chennai, India
           </p>
-          <button className="inline-block  font-poppins  text-emerald-500 hover:bg-emerald-500 hover:text-white border border-emerald-500 px-10 py-4 mt-10 rounded-full transition-colors duration-300  smooth-scroll">
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="inline-block font-poppins text-emerald-500 hover:bg-emerald-500 hover:text-white border border-emerald-500 px-6 sm:px-10 py-3 sm:py-4 mt-6 sm:mt-10 rounded-full transition-colors duration-300 smooth-scroll"
+          >
             Hire Me
           </button>
         </div>
-        <div className="absolute bottom-12 w-full flex justify-center">
-          <IoIosArrowDown className="fall-animation text-3xl text-white cursor-pointer" />
+        <div className="absolute bottom-8 sm:bottom-12 w-full flex justify-center">
+          <IoIosArrowDown className="fall-animation text-2xl sm:text-3xl text-white cursor-pointer" />
         </div>
       </section>
+
       <section id="about-me">
-        <div className="bg-dark-1 flex flex-col min-h-screen ml-64">
+        <div className="bg-dark-1 flex flex-col min-h-screen md:ml-64 p-4 md:p-0">
           <div className="relative w-full">
-            <p className="text-white font-poppins justify-center absolute translate-x-1/2 mt-5 ml-64 top-2 pt-14 font-semibold text-4xl">
-              Know <span className="underline  customUnderline">Me</span> More
+            <p className="text-white font-poppins text-center md:text-left absolute md:translate-x-1/2 mt-5 md:ml-64 top-2 pt-14 font-semibold text-xl md:text-3xl">
+              Know <span className="underline customUnderline">Me</span> More
             </p>
-            <h1 className=" text-Gray-1  opacity-5 text-9xl   pt-10 font-poppins font-semibold flex items-center justify-center z-10">
+            <h1 className="text-gray-600 opacity-5 text-4xl md:text-8xl pt-10 font-poppins font-semibold flex items-center justify-center z-10">
               ABOUT ME
             </h1>
           </div>
-          <div className=" flex justify-between px-20 mt-8">
-            <div className=" ">
-              <h1
-                className="font-semibold font-serif text-2xl  text-white "
-                style={{ wordSpacing: "0.25rem" }}
-              >
+          <div className="flex flex-col md:flex-row justify-between px-4 md:px-20 mt-8 space-y-8 md:space-y-0">
+            <div className="md:flex-1">
+              <h1 className="font-semibold font-serif text-lg md:text-xl text-white">
                 I'm <span className="text-emerald-500">Sabari Sakthivel</span>,
                 a MERN Stack Developer
               </h1>
-              <p
-                className="text-gray-400  font-sans mt-4 font-medium "
-                style={{ wordSpacing: "0.25rem" }}
-              >
+              <p className="text-gray-400 font-sans mt-4 font-medium text-sm md:text-base">
                 I help you build brand for your business at an affordable price.
-                Thousands of <br /> clients have procured exceptional results
-                while working with our dedicated team. <br /> when an unknown
-                printer took a galley of type and scrambled it to make a type{" "}
-                <br /> specimen book.
-                <p className="mt-6">
-                  Delivering work within time and budget which meets client’s
-                  requirements is our <br /> moto. Lorem Ipsum has been the
-                  industry's standard dummy text ever when an <br /> unknown
-                  printer took a galley.
-                </p>
+                Thousands of <br className="hidden md:block" />
+                clients have procured exceptional results while working with our
+                dedicated team. <br className="hidden md:block" />
+                When an unknown printer took a galley of type and scrambled it
+                to make a type <br className="hidden md:block" />
+                specimen book.
+              </p>
+              <p className="text-gray-400 font-sans mt-4 font-medium text-sm md:text-base">
+                Delivering work within time and budget which meets client’s
+                requirements is our <br className="hidden md:block" />
+                motto. Lorem Ipsum has been the industry's standard dummy text
+                ever since an <br className="hidden md:block" />
+                unknown printer took a galley.
               </p>
             </div>
             <div className="text-gray-400 mb-10 h-9 relative inline-block font-serif">
-              <ul>
-                <li className="border-b-2 border-zinc-400 py-3 font-medium gap-1">
-                  <span className="text-gray-100 font-sans ">Name : </span>
+              <ul className="space-y-3">
+                <li className="border-b-2 border-zinc-400 py-3 font-medium">
+                  <span className="text-gray-100 font-sans">Name: </span>
                   <span className="font-serif">Sabari Sakthivel</span>
                 </li>
-                <li className="border-b-2 border-zinc-400  py-3 gap-1 ">
-                  <span className="text-gray-100 font-sans ">
-                    Phone Number :
+                <li className="border-b-2 border-zinc-400 py-3">
+                  <span className="text-gray-100 font-sans">
+                    Phone Number:{" "}
                   </span>
                   <span className="font-sans"> 6383284269</span>
                 </li>
-                <li className="border-b-2 border-zinc-400  py-3 gap-1">
-                  <span className="text-gray-100 font-sans "> Email :</span>
+                <li className="border-b-2 border-zinc-400 py-3">
+                  <span className="text-gray-100 font-sans">Email: </span>
                   <span className="font-sans text-emerald-500">
                     <Link to="mailto:sabari8536@gmail.com">
-                      {" "}
                       sabari8536@gmail.com
                     </Link>
                   </span>
                 </li>
-                <li className="border-b-2 border-zinc-400  py-3 gap-1">
-                  <span className="text-gray-100 font-sans ">Age :</span>
-                  <span className="font-sans"> 23</span>
+                <li className="border-b-2 border-zinc-400 py-3">
+                  <span className="text-gray-100 font-sans">Age: </span>
+                  <span className="font-sans">23</span>
                 </li>
-                <li className="border-b-2 border-zinc-400  py-3 gap-1">
-                  <span className="text-gray-100 font-sans ">From :</span>
-                  <span className="font-serif"> Chennai, India</span>
+                <li className="border-b-2 border-zinc-400 py-3">
+                  <span className="text-gray-100 font-sans">From: </span>
+                  <span className="font-serif">Chennai, India</span>
                 </li>
               </ul>
 
-              <button className=" font-sans ml-24  text-white p-2 mt-8 rounded-full bg-emerald-500 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 trasition duration-300 ease-in-out ">
+              <button
+                className="font-sans ml-16 md:ml-24 text-white p-2 mt-6 md:mt-8 rounded-full bg-emerald-500 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition duration-300 ease-in-out"
+                onClick={() =>
+                  window.open(
+                    "https://storage.googleapis.com/sabarivel/Sabari%20Sakthivel%20(2).pdf",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+              >
                 Download CV
               </button>
             </div>
           </div>
         </div>
+
         <button
           className={`fixed bottom-4 right-4 p-2 text-white hover:bg-emerald-500 rounded-full shadow-lg bg-slate-700 transition-opacity duration-300 ${
             isVisible ? "opacity-100" : "opacity-0"
@@ -173,6 +198,7 @@ const Home = () => {
           <IoIosArrowUp size={24} />
         </button>
       </section>
+
       <section id="what-i-do">
         <div className="bg-dark-2 flex flex-col min-h-screen ml-64">
           <div className="relative w-full text-center">
@@ -387,7 +413,7 @@ const Home = () => {
         </div>
       </section>
       <section id="portfolio">
-        <div className="bg-dark-2 flex flex-col min-h-[150vh] ml-64">
+        <div className="bg-dark-2 flex flex-col h-screen ml-64">
           <div className="relative w-full">
             <p className="text-white font-poppins ml-96 mt-4 justify-center absolute translate-x-1/2 top-2 pt-14 font-semibold text-4xl">
               My Work
@@ -396,10 +422,52 @@ const Home = () => {
               PORTFOLIO
             </h1>
           </div>
+          <div>
+            <div className="flex gap-14 font-bold mt- ">
+              <div className="w-72 h-32 ml-28 mt-8 ">
+                <img src={GoDriveImg} alt="img" />
+              </div>
+              <div>
+                <h3 className="text-2xl text-emerald-300 font-sans mt-5">
+                  GoDrive-Cab Booking Service
+                </h3>
+                <p className="leading-relaxed text-wrap  mt-2 text-Gray-1">
+                  GoDrive is a cab booking service that provides users with a
+                  seamless <br /> and reliable platform to book rides
+                  conveniently.
+                </p>
+                <p className="leading-relaxed mt-2 text-Gray-1">
+                  {" "}
+                  It ensures efficient and secure transportation with real-time
+                  tracking <br /> and various payment options.
+                </p>
+              </div>
+            </div>
+            <div className="flex font-bold ">
+              <div className="ml-28 mt-10">
+                <h3 className="text-2xl text-emerald-300 font-sans mt-5">
+                  GoDrive-Cab Booking Service
+                </h3>
+                <p className="leading-relaxed text-wrap  mt-2 text-Gray-1">
+                  GoDrive is a cab booking service that provides users with a
+                  seamless <br /> and reliable platform to book rides
+                  conveniently.
+                </p>
+                <p className="leading-relaxed mt-2 text-Gray-1">
+                  {" "}
+                  It ensures efficient and secure transportation with real-time
+                  tracking <br /> and various payment options.
+                </p>
+              </div>
+              <div className="w-72 h-32 ml-auto mr-28 mt-16">
+                <img src={GoDriveImg} alt="img" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section id="contact">
-        <div className="bg-dark-1 flex flex-col min-h-screen ml-64">
+        <div className="bg-dark-1 flex flex-col h-screen ml-64">
           <div className="relative w-full">
             <p className="text-white font-poppins justify-center ml-80 mt-4 absolute translate-x-1/2 top-2 pt-14 font-semibold text-4xl">
               Get in Touch
@@ -407,6 +475,79 @@ const Home = () => {
             <h1 className=" text-Gray-1  opacity-5 text-9xl   pt-10 font-poppins font-semibold flex items-center justify-center z-10">
               CONTACT
             </h1>
+          </div>
+
+          <div className="flex">
+            <div className=" ml-48 mt-9  ">
+              <h4 className="font-bold  text-white text-2xl">ADDRESS</h4>
+              <p className="text-Gray-1 leading-relaxed font-poppins mt-5 ">
+                2/49, Vani Nagar,
+                <br />
+                Pappam Palayam, <br /> Namakkal, <br /> 638007.
+              </p>
+              <p className=" mt-6 flex gap-3  text-emerald-400 ">
+                <FaPhoneVolume className="mt-1" size={24} />{" "}
+                <span className="text-Gray-1 font-poppins">6383284269</span>
+              </p>
+
+              <Link
+                to="mailto:sabari8536@gmail.com"
+                className="flex gap-2 mt-3  text-Gray-1"
+              >
+                <HiOutlineMail className="text-emerald-400" size={28} />
+                <span className="hover:text-emerald-400 font-poppins">
+                  sabari8536@gmail.com
+                </span>
+              </Link>
+              <h1 className="text-white font-bold text-2xl mt-8">FOLLOW ME</h1>
+              <nav className="flex gap-6 mb-3  mt-5">
+                <Link to="https://linkedin.com/in/Sabari-Sakthivel">
+                  <FaLinkedin
+                    className="text-Gray-1 hover:text-blue-500"
+                    size={24}
+                  />
+                </Link>
+                <Link to="https://github.com/Sabari-Sakthivel">
+                  <FaGithub
+                    className="text-Gray-1 hover:text-gray-600"
+                    size={24}
+                  />
+                </Link>
+
+                <Link to="https://twitter.com/Sabari-Sakthivel">
+                  <FaTwitter
+                    className="text-Gray-1 hover:text-blue-400"
+                    size={24}
+                  />
+                </Link>
+              </nav>
+            </div>
+            <div className="  p-10  ml-28">
+              <h2 className="text-white font-bold text-2xl font-poppins">
+                SEND US NOTE :
+              </h2>
+              <input
+                type="text"
+                className="bg-dark-2 mt-3  text-white font-poppins  rounded-lg p-2 w-80  focus:outline-none focus:ring-2 focus:ring-emerald-500 trasition duration-300 ease-in-out"
+                placeholder="Name"
+              />
+              <input
+                type="email"
+                className="bg-dark-2 mt-3  text-white font-poppins  rounded-lg p-2 w-80  focus:outline-none focus:ring-2 focus:ring-emerald-500 trasition duration-300 ease-in-out"
+                placeholder="Email"
+              />
+              <br />
+              <textarea
+                name="Messaage"
+                id="message"
+                placeholder="Tell us more about your needs ....."
+                className="bg-dark-2 mt-3  focus:outline-none focus:ring-2 focus:ring-emerald-500 trasition duration-300 ease-in-out text-white font-poppins rounded-lg p-2 w-80 h-36"
+              ></textarea>{" "}
+              <br />
+              <button className="font-sans w-32 ml-24 text-white p-2 mt-8 rounded-full bg-emerald-500 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition duration-300 ease-in-out">
+                Send Message
+              </button>
+            </div>
           </div>
         </div>
       </section>

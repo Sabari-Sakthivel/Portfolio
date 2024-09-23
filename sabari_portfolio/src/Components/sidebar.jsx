@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import profile from "../../src/assets/profile.jpeg";
@@ -7,16 +7,39 @@ import { FaGithub, FaLinkedin, FaRegEnvelope, FaTwitter } from "react-icons/fa";
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const location = useLocation();
+  const [activeSection, setActiveSection] = useState(null); // track the current section
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  // Function to determine if the link is active based on the current URL
   const isActiveLink = (path) => location.pathname === path;
+
   const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(sectionId); // Update the active section
+    }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about-me", "what-i-do", "resume", "portfolio", "contact"];
+      sections.forEach((sectionId) => {
+        const section = document.getElementById(sectionId);
+        const rect = section?.getBoundingClientRect();
+        if (rect && rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+          setActiveSection(sectionId);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div
@@ -44,8 +67,8 @@ const Sidebar = () => {
               className={classNames(
                 "block py-2.5 px-4 rounded hover:text-emerald-500",
                 {
-                  "text-emerald-500": isActiveLink("/"),
-                  "text-white": !isActiveLink("/"),
+                  "text-emerald-500": activeSection === "home" || isActiveLink("/"),
+                  "text-white": activeSection !== "home" && !isActiveLink("/"),
                 },
                 "text-center"
               )}
@@ -59,8 +82,8 @@ const Sidebar = () => {
               className={classNames(
                 "block py-2.5 px-4 rounded hover:text-emerald-500",
                 {
-                  "text-emerald-500": isActiveLink("/about-me"),
-                  "text-white": !isActiveLink("/about-me"),
+                  "text-emerald-500": activeSection === "about-me" || isActiveLink("/about-me"),
+                  "text-white": activeSection !== "about-me" && !isActiveLink("/about-me"),
                 },
                 "text-center"
               )}
@@ -74,8 +97,8 @@ const Sidebar = () => {
               className={classNames(
                 "block py-2.5 px-4 rounded hover:text-emerald-500",
                 {
-                  "text-emerald-500": isActiveLink("/what-i-do"),
-                  "text-white": !isActiveLink("/what-i-do"),
+                  "text-emerald-500": activeSection === "what-i-do" || isActiveLink("/what-i-do"),
+                  "text-white": activeSection !== "what-i-do" && !isActiveLink("/what-i-do"),
                 },
                 "text-center"
               )}
@@ -89,8 +112,8 @@ const Sidebar = () => {
               className={classNames(
                 "block py-2.5 px-4 rounded hover:text-emerald-500",
                 {
-                  "text-emerald-500": isActiveLink("/resume"),
-                  "text-white": !isActiveLink("/resume"),
+                  "text-emerald-500": activeSection === "resume" || isActiveLink("/resume"),
+                  "text-white": activeSection !== "resume" && !isActiveLink("/resume"),
                 },
                 "text-center"
               )}
@@ -104,8 +127,8 @@ const Sidebar = () => {
               className={classNames(
                 "block py-2.5 px-4 rounded hover:text-emerald-500",
                 {
-                  "text-emerald-500": isActiveLink("/portfolio"),
-                  "text-white": !isActiveLink("/portfolio"),
+                  "text-emerald-500": activeSection === "portfolio" || isActiveLink("/portfolio"),
+                  "text-white": activeSection !== "portfolio" && !isActiveLink("/portfolio"),
                 },
                 "text-center"
               )}
@@ -119,8 +142,8 @@ const Sidebar = () => {
               className={classNames(
                 "block py-2.5 px-4 rounded hover:text-emerald-500",
                 {
-                  "text-emerald-500": isActiveLink("/contact"),
-                  "text-white": !isActiveLink("/contact"),
+                  "text-emerald-500": activeSection === "contact" || isActiveLink("/contact"),
+                  "text-white": activeSection !== "contact" && !isActiveLink("/contact"),
                 },
                 "text-center"
               )}
@@ -135,27 +158,21 @@ const Sidebar = () => {
           to="https://linkedin.com/in/Sabari-Sakthivel"
           className="hover:text-blue-500"
         >
-          {" "}
           <FaLinkedin size={17} />
         </Link>
-
         <Link
           to="https://github.com/Sabari-Sakthivel"
           className="hover:text-gray-600"
         >
           <FaGithub size={17} />
         </Link>
-
         <Link
           to="https://twitter.com/Sabari-Sakthivel"
           className="hover:text-blue-400"
         >
           <FaTwitter size={17} />
         </Link>
-
-        <Link
-         to="mailto:sabari8536@gmail.com" 
-         className="hover:text-gray-600">
+        <Link to="mailto:sabari8536@gmail.com" className="hover:text-gray-600">
           <FaRegEnvelope size={17} />
         </Link>
       </nav>
