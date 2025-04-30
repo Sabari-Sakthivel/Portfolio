@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import GoDriveImg from "../../src/assets/GoDrive.png";
+import Jobhire from "../assets/Jobhire-Project.png";
 import { Link } from "react-router-dom";
 import Sidebar from "./sidebar";
 
@@ -115,7 +116,7 @@ const Home = () => {
             <div className="relative  h-full">
               <p className="text-white font-poppins text-center lg:left-16 ml-24 md:text-left  absolute md:translate-x-1/2 mt-2 md:ml-64 top-2 lg:pt-14 pt-8 font-semibold text-xl md:text-3xl">
                 Know{" "}
-                <span className="underline decoration-emerald-400">Me</span>{" "}
+                <span className="underline decoration-emerald-400">Me</span>
                 More
               </p>
               <h1 className="text-gray-100 opacity-5 text-5xl lg:text-8xl lg:pt-10 pt-7  font-poppins font-semibold flex items-center justify-center z-10">
@@ -210,7 +211,8 @@ const Home = () => {
           <div className="bg-dark-2 flex flex-col min-h-screen md:ml-64 p-4">
             <div className="relative w-full text-center">
               <p className="text-white font-poppins mt-5 absolute inset-x-0 lg:top-3 right-0 mx-auto sm:bottom-3 pt-14 font-semibold text-3xl md:text-4xl">
-                What I Do?
+                Wh<span className="underline decoration-emerald-400">at I D</span>
+                o?
               </p>
               <h1 className="text-gray-100 opacity-5 text-6xl md:text-9xl pt-10 font-poppins font-semibold flex items-center justify-center z-10">
                 SERVICE
@@ -243,21 +245,21 @@ const Home = () => {
                     "Efficiently managing and optimizing your data for reliability and performance. I design and implement robust database systems that ensure data integrity and security.",
                 },
               ].map((service, index) => (
-                <div
-                  key={index}
-                  className="flex gap-5 md:gap-7 mt-7 w-full md:w-1/2 p-4"
-                >
-                  <div className="relative bg-black h-fit rounded p-4">
-                    {service.icon}
-                  </div>
-                  <div className="max-w-sm">
-                    <h3 className="text-white font-serif font-bold text-xl md:text-2xl">
+                <div key={index} className="w-full md:w-1/2 p-4">
+                  {/* Icon & Title Row */}
+                  <div className="flex flex-col sm:flex-row gap-3 items-center sm:items-start">
+                    <div className="relative bg-black h-fit rounded p-4">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-white font-serif font-bold text-xl md:text-2xl text-center sm:text-left">
                       {service.title}
                     </h3>
-                    <p className="text-gray-300 mt-1 font-sans font-medium leading-relaxed">
-                      {service.description}
-                    </p>
                   </div>
+
+                  {/* Description */}
+                  <p className="text-gray-300 mt-3 text-center sm:text-left font-sans font-medium leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -268,7 +270,8 @@ const Home = () => {
           <div className="bg-dark-1 flex flex-col min-h-[135vh]  md:ml-64">
             <div className="relative w-full text-center">
               <p className="text-white font-poppins mt-0  lg:mt-5 absolute inset-x-0 right-0 mx-auto  top-2 pt-14 font-semibold text-4xl">
-                Resume
+                Re<span className="underline decoration-emerald-400">sum</span>
+                e
               </p>
               <h1 className="text-gray-100 opacity-5 lg:text-9xl pt-10 font-poppins font-semibold text-5xl flex items-center justify-center z-10">
                 SUMMARY
@@ -333,7 +336,7 @@ const Home = () => {
                 <div className="grid grid-cols-1 gap-10">
                   <div className="bg-dark-2 relative w-full lg:h-[245px] h-full rounded shadow p-5">
                     <button className="rounded w-fit text-white bg-emerald-400">
-                      2024 - Present
+                      Sep 2024 - April 2025
                     </button>
                     <h2 className="text-white font-serif font-bold mt-4">
                       MERN Stack Developer - Intern
@@ -406,7 +409,8 @@ const Home = () => {
           <div className="bg-dark-2 flex flex-col  h-full lg:ml-64 p-4 lg:p-0">
             <div className="relative w-full text-center">
               <p className="text-white font-poppins lg:mt-6 lg:ml-80 lg:left-32 left-24 justify-center absolute  top-2 pt-14 font-semibold text-3xl md:text-4xl">
-                My Work
+                M<span className="underline decoration-emerald-400">Y W</span>
+               ork
               </p>
               <h1 className="text-gray-100 opacity-5 text-5xl lg:text-9xl pt-10 font-poppins font-semibold flex items-center justify-center z-10">
                 PORTFOLIO
@@ -416,20 +420,19 @@ const Home = () => {
             <div className="mt-10 flex flex-col gap-12 lg:px-10 lg:gap-14">
               {/* First Project */}
               <h3 className="text-emerald-300 lg:hidden text-center text-2xl font-bold ">
-                    GoDrive - Cab Booking Service
-                  </h3>
+                JobHire - Jobportel Platform
+              </h3>
               <div className="flex flex-col lg:flex-row items-center lg:mb-0 mb:5 gap-6">
                 <div>
-                
                   <img
-                    src={GoDriveImg}
+                    src={Jobhire}
                     alt="GoDrive Project"
-                    className="w-80 h-40"
+                    className="w-80 h-40 rounded-md"
                   />
                 </div>
                 <div className="text-center lg:text-left ">
                   <h3 className="text-emerald-300 sm:block hidden text-2xl font-bold ">
-                    GoDrive - Cab Booking Service
+                    JobHire - Employer to Jobseeker Connecting Platform
                   </h3>
                   <div />
                   <div className="lg:mb-5">
@@ -470,7 +473,7 @@ const Home = () => {
                   <img
                     src={GoDriveImg}
                     alt="GoDrive Project"
-                    className="w-80 h-40 mb-5"
+                    className="w-80 h-40 mb-5 rounded-md"
                   />
                 </div>
               </div>
@@ -482,7 +485,8 @@ const Home = () => {
           <div className="bg-dark-1 flex flex-col lg:h-screen h-full lg:ml-64 p-4 lg:p-0">
             <div className="relative w-full mb-5 text-center">
               <p className="text-white font-poppins lg:mt-6 mt-1 ml-16 lg:ml-80 absolute lg:translate-x-1/2 top-2 pt-14 font-semibold text-3xl md:text-4xl">
-                Get in Touch
+                Get <span className="underline decoration-emerald-400">in T</span>
+                 ouch
               </p>
               <h1 className="text-gray-100 opacity-5 text-5xl lg:text-9xl pt-10 font-poppins font-semibold z-10">
                 CONTACT
