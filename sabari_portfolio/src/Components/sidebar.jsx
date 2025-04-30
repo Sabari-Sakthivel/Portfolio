@@ -13,7 +13,10 @@ import {
 const Sidebar = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(
+    () => window.innerWidth >= 1024
+  );
+
   const isActiveLink = (path) => location.pathname === path;
 
   const scrollToSection = (sectionId) => {
@@ -22,8 +25,23 @@ const Sidebar = () => {
       section.scrollIntoView({ behavior: "smooth" });
       setActiveSection(sectionId);
     }
-    if (window.innerWidth < 1024) setIsSidebarOpen(false); // Close sidebar after clicking in small screens
+    if (window.innerWidth < 1024) setIsSidebarOpen(true); // Close sidebar after clicking in small screens
   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,30 +71,38 @@ const Sidebar = () => {
   return (
     <>
       {/* Header for Small and Medium Devices */}
-      <header className="lg:hidden fixed top-0 left-0 w-screen bg-black text-white flex justify-between items-center py-4 px-4 shadow-lg z-50">
-        <h1 className="font-serif text-lg">Sabari Sakthivel</h1>
+      <header className="lg:hidden lg:overflow-y-scroll fixed top-0 left-0 w-screen bg-black text-white flex justify-between items-center py-4 px-4 shadow-lg z-50">
+        <img
+          src={profile}
+          alt="Profile"
+          className="w-9 h-9 rounded-full object-cover lg:block "
+        />
+        <h1 className="font-serif items-center text-lg">Sabari Sakthivel</h1>
         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-          <FaBars size={24} className="text-white" />
+          <FaBars size={24} className="text-white " />
         </button>
       </header>
 
       {/* Sidebar for Large Devices and Toggleable Sidebar for Small/Medium Devices */}
       <div
-      className={classNames(
-        "fixed top-0 left-0 bg-black text-white lg:w-64 lg:h-screen w-full  py-4 lg:overflow-y-scroll transform transition-transform duration-300 ease-in-out z-40",
-        {
-          "lg:translate-x-0 -translate-y-full": isSidebarOpen,
-          "lg:-translate-x-full  translate-y-0 ": !isSidebarOpen,
-        }
-      )}
-    >
+        className={classNames(
+          "fixed top-0 left-0  bg-black text-white lg:w-64 lg:h-screen w-full py-4 lg:overflow-y-scroll transform transition-transform duration-300 ease-in-out z-40",
+          {
+            "translate-y-0": isSidebarOpen, // show sidebar on small screens if open
+            "-translate-y-full": !isSidebarOpen, // hide on small screens if not open
+            "lg:translate-x-0": true, // always visible on large screens
+          }
+        )}
+      >
         <div className="flex flex-col items-center pt-8">
           <img
             src={profile}
             alt="Profile"
             className="w-36 h-36 rounded-full object-cover border-8 border-gray-800 lg:block hidden"
           />
-          <h1 className="font-serif text-2xl pt-4 lg:block hidden">Sabari Sakthivel</h1>
+          <h1 className="font-serif text-2xl pt-4 lg:block hidden">
+            Sabari Sakthivel
+          </h1>
         </div>
         <nav className="mt-4 flex flex-col items-center">
           <ul className="lg:space-y-2 w-full lg:text-center   ">
